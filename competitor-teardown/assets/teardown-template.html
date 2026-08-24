@@ -1,0 +1,90 @@
+<title>{{TEARDOWN_TITLE}} — Competitor Teardown</title>
+<style>
+  :root {
+    --bg: #f6f4ee;
+    --surface: #ffffff;
+    --surface-2: #efece2;
+    --border: #ddd7c6;
+    --text: #21241f;
+    --text-dim: #6d6c5d;
+    --accent: #3f6b4f;
+    --accent-soft: #e7efe6;
+    --warn: #9c6a29;
+    --warn-soft: #f4ead9;
+    --bad: #a1433c;
+    --bad-soft: #f5e7e3;
+    --mono-chip: #4d5b66;
+    --mono-chip-soft: #e7ebec;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161810; --surface: #1f2217; --surface-2: #262a1c; --border: #38392a;
+      --text: #eeeee2; --text-dim: #a3a289; --accent: #7bab8b; --accent-soft: #263329;
+      --warn: #d1a35f; --warn-soft: #332a17; --bad: #d18a83; --bad-soft: #362320;
+      --mono-chip: #9fb2bd; --mono-chip-soft: #232a2e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161810; --surface: #1f2217; --surface-2: #262a1c; --border: #38392a;
+    --text: #eeeee2; --text-dim: #a3a289; --accent: #7bab8b; --accent-soft: #263329;
+    --warn: #d1a35f; --warn-soft: #332a17; --bad: #d18a83; --bad-soft: #362320;
+    --mono-chip: #9fb2bd; --mono-chip-soft: #232a2e;
+  }
+  body { background: var(--bg); color: var(--text); margin: 0; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 1.9rem; margin: 0 0 4px; }
+  .sub { color: var(--text-dim); margin-bottom: 32px; }
+  section { margin-bottom: 36px; }
+  h2 { font-size: 1.15rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  .overflow { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 560px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; }
+  .band { display: inline-block; padding: 3px 10px; border-radius: 999px; font-weight: 600; font-size: 0.78rem; }
+  .band.growth { background: var(--accent-soft); color: var(--accent); }
+  .band.steady { background: var(--warn-soft); color: var(--warn); }
+  .band.stalling, .band.dormant { background: var(--bad-soft); color: var(--bad); }
+  .competitor-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin-bottom: 16px; }
+  .competitor-card h3 { margin: 0 0 4px; font-size: 1.1rem; }
+  .competitor-card .meta { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 12px; }
+  blockquote {
+    background: var(--surface-2); border-left: 3px solid var(--accent);
+    margin: 8px 0; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.9rem;
+  }
+  .chip { display: inline-block; font-size: 0.7rem; background: var(--mono-chip-soft); color: var(--mono-chip); padding: 2px 8px; border-radius: 5px; margin-right: 6px; }
+  a { color: var(--accent); }
+  ul { padding-left: 20px; }
+</style>
+
+<div class="wrap">
+  <h1>{{TEARDOWN_TITLE}}</h1>
+  <div class="sub">{{COMPETITOR_LIST_SUMMARY}}</div>
+
+  <section>
+    <h2>Momentum scorecard</h2>
+    <div class="overflow">
+      <table>
+        <thead><tr><th>Rank</th><th>Competitor</th><th>Score</th><th>Band</th></tr></thead>
+        <tbody>
+          {{SCORECARD_ROWS}}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Per-competitor deep dive</h2>
+    {{COMPETITOR_CARDS}}
+  </section>
+
+  <section>
+    <h2>Gaps and openings</h2>
+    <ul>{{GAPS_LIST}}</ul>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ul>{{SOURCES_LIST}}</ul>
+  </section>
+</div>

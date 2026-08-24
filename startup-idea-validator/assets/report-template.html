@@ -1,0 +1,128 @@
+<title>{{IDEA_NAME}} — Validation Report</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --border: #e5e1da;
+    --text: #23201b;
+    --text-dim: #6b665c;
+    --accent: #b45309;
+    --accent-soft: #fdf1e3;
+    --good: #15803d;
+    --good-soft: #ecfdf3;
+    --warn: #b45309;
+    --warn-soft: #fef6e7;
+    --bad: #b91c1c;
+    --bad-soft: #fef2f2;
+    font-family: -apple-system, "Segoe UI", Inter, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17140f;
+      --surface: #211d16;
+      --border: #383226;
+      --text: #f1ede4;
+      --text-dim: #a8a190;
+      --accent: #f0a94a;
+      --accent-soft: #33270f;
+      --good: #4ade80;
+      --good-soft: #12281a;
+      --warn: #f0a94a;
+      --warn-soft: #2e2210;
+      --bad: #f87171;
+      --bad-soft: #2b1414;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17140f;
+    --surface: #211d16;
+    --border: #383226;
+    --text: #f1ede4;
+    --text-dim: #a8a190;
+    --accent: #f0a94a;
+    --accent-soft: #33270f;
+    --good: #4ade80;
+    --good-soft: #12281a;
+    --warn: #f0a94a;
+    --warn-soft: #2e2210;
+    --bad: #f87171;
+    --bad-soft: #2b1414;
+  }
+  body { background: var(--bg); color: var(--text); margin: 0; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 1.9rem; margin: 0 0 4px; }
+  .sub { color: var(--text-dim); margin-bottom: 32px; }
+  .score-card {
+    display: flex; align-items: center; gap: 24px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px; margin-bottom: 32px;
+  }
+  .score-num { font-size: 3rem; font-weight: 700; line-height: 1; }
+  .band { display: inline-block; padding: 4px 12px; border-radius: 999px; font-weight: 600; font-size: 0.85rem; }
+  .band.go { background: var(--good-soft); color: var(--good); }
+  .band.mid { background: var(--warn-soft); color: var(--warn); }
+  .band.no { background: var(--bad-soft); color: var(--bad); }
+  section { margin-bottom: 36px; }
+  h2 { font-size: 1.15rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; }
+  blockquote {
+    background: var(--surface); border-left: 3px solid var(--accent);
+    margin: 0 0 12px; padding: 10px 16px; border-radius: 0 8px 8px 0;
+  }
+  blockquote a { color: var(--accent); }
+  .overflow { overflow-x: auto; }
+  a { color: var(--accent); }
+  ul { padding-left: 20px; }
+</style>
+
+<div class="wrap">
+  <h1>{{IDEA_NAME}}</h1>
+  <div class="sub">{{ONE_LINE_PITCH}} — for {{TARGET_USER}}</div>
+
+  <div class="score-card">
+    <div class="score-num">{{SCORE}}</div>
+    <div>
+      <span class="band {{VERDICT_BAND_CLASS}}">{{VERDICT_BAND}}</span>
+      <p style="margin:8px 0 0;color:var(--text-dim)">{{VERDICT_ONE_LINER}}</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>Demand & trend signal</h2>
+    <p>{{DEMAND_SUMMARY}}</p>
+  </section>
+
+  <section>
+    <h2>Competitive landscape</h2>
+    <div class="overflow">
+      <table>
+        <thead><tr><th>Competitor</th><th>What they do</th><th>Pricing</th><th>Angle for this idea</th></tr></thead>
+        <tbody>
+          {{COMPETITOR_ROWS}}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Audience pain points</h2>
+    {{PAIN_POINT_QUOTES}}
+  </section>
+
+  <section>
+    <h2>Pricing & willingness-to-pay</h2>
+    <p>{{PRICING_SUMMARY}}</p>
+  </section>
+
+  <section>
+    <h2>Risks & open questions</h2>
+    <ul>{{RISKS_LIST}}</ul>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ul>{{SOURCES_LIST}}</ul>
+  </section>
+</div>

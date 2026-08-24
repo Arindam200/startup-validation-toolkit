@@ -1,0 +1,98 @@
+<title>{{IDEA_NAME}} — Go-to-Market Plan</title>
+<style>
+  :root {
+    --bg: #f6f4ee;
+    --surface: #ffffff;
+    --surface-2: #efece2;
+    --border: #ddd7c6;
+    --text: #21241f;
+    --text-dim: #6d6c5d;
+    --accent: #3f6b4f;
+    --accent-soft: #e7efe6;
+    --warn: #9c6a29;
+    --warn-soft: #f4ead9;
+    --mono-chip: #4d5b66;
+    --mono-chip-soft: #e7ebec;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161810; --surface: #1f2217; --surface-2: #262a1c; --border: #38392a;
+      --text: #eeeee2; --text-dim: #a3a289; --accent: #7bab8b; --accent-soft: #263329;
+      --warn: #d1a35f; --warn-soft: #332a17; --mono-chip: #9fb2bd; --mono-chip-soft: #232a2e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161810; --surface: #1f2217; --surface-2: #262a1c; --border: #38392a;
+    --text: #eeeee2; --text-dim: #a3a289; --accent: #7bab8b; --accent-soft: #263329;
+    --warn: #d1a35f; --warn-soft: #332a17; --mono-chip: #9fb2bd; --mono-chip-soft: #232a2e;
+  }
+  body { background: var(--bg); color: var(--text); margin: 0; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 1.9rem; margin: 0 0 4px; }
+  .sub { color: var(--text-dim); margin-bottom: 32px; }
+  .positioning {
+    background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent);
+    border-radius: 0 12px 12px 0; padding: 22px 24px; margin-bottom: 36px; font-size: 1.05rem;
+  }
+  section { margin-bottom: 36px; }
+  h2 { font-size: 1.15rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  ol.channels { padding-left: 0; list-style: none; counter-reset: ch; }
+  ol.channels li {
+    counter-increment: ch; position: relative; padding: 14px 16px 14px 44px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px;
+  }
+  ol.channels li::before {
+    content: counter(ch); position: absolute; left: 14px; top: 14px;
+    font-weight: 700; color: var(--accent);
+  }
+  .ai-visibility {
+    background: var(--accent-soft); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px 22px; margin-bottom: 16px;
+  }
+  .chip { display: inline-block; font-size: 0.72rem; background: var(--mono-chip-soft); color: var(--mono-chip); padding: 2px 8px; border-radius: 5px; margin-right: 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-dim); font-weight: 600; }
+  a { color: var(--accent); }
+  ul { padding-left: 20px; }
+</style>
+
+<div class="wrap">
+  <h1>{{IDEA_NAME}}</h1>
+  <div class="sub">Go-to-market plan</div>
+
+  <div class="positioning">{{POSITIONING_STATEMENT}}</div>
+
+  <section>
+    <h2>AI-answer-engine visibility</h2>
+    <div class="ai-visibility">{{AI_VISIBILITY_FINDINGS}}</div>
+  </section>
+
+  <section>
+    <h2>Channel plan</h2>
+    <ol class="channels">
+      {{CHANNEL_ITEMS}}
+    </ol>
+  </section>
+
+  <section>
+    <h2>First-customers plan</h2>
+    <p>{{FIRST_CUSTOMERS_PLAN}}</p>
+  </section>
+
+  <section>
+    <h2>Pricing recommendation</h2>
+    <p>{{PRICING_RECOMMENDATION}}</p>
+  </section>
+
+  <section>
+    <h2>Content & SEO seed list</h2>
+    <ul>{{CONTENT_SEEDS}}</ul>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ul>{{SOURCES_LIST}}</ul>
+  </section>
+</div>
