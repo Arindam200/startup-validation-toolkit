@@ -1,0 +1,15 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Startup Validation Toolkit",
+      "description": "Three-stage pipeline that turns a one-line startup idea into an evidence-backed decision, a competitive intelligence report, and an actual launch plan, all sourced from live web data through the ScrapingDog MCP server.",
+      "skills": [
+        "startup-idea-validator",
+        "competitor-teardown",
+        "gtm-launch-planner"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Startup Validation Toolkit
 
+![demo](./assets/demo.png)
+
 Three Claude Code skills that turn a one-line startup idea into an evidence-backed decision, a
 competitive intelligence report, and an actual launch plan, all sourced from live web data through
 the [ScrapingDog](https://dub.sh/scrapingdog) MCP server instead of an LLM's training-data guesses.
@@ -44,6 +46,36 @@ These three skills lean on the ScrapingDog MCP server's full ~30-tool surface: s
 transcripts), Google Maps, screenshots, and a tool that queries ChatGPT directly, routed by what the
 question actually needs, not used for the sake of using them.
 
+## Install
+
+### Option A: skills.sh (recommended)
+
+Install any or all three skills with the [skills](https://www.skills.sh) CLI; it'll prompt you to
+pick which ones you want:
+
+```bash
+npx skills add Arindam200/startup-validation-toolkit
+```
+
+Or grab a single skill directly:
+
+```bash
+npx skills add Arindam200/startup-validation-toolkit/skills/startup-idea-validator
+```
+
+### Option B: manual symlink
+
+Copy or symlink the three skill folders into `~/.claude/skills/`:
+
+```bash
+ln -s "$(pwd)/skills/startup-idea-validator" ~/.claude/skills/startup-idea-validator
+ln -s "$(pwd)/skills/competitor-teardown" ~/.claude/skills/competitor-teardown
+ln -s "$(pwd)/skills/gtm-launch-planner" ~/.claude/skills/gtm-launch-planner
+```
+
+Either way, you'll still need the ScrapingDog MCP server configured wherever you invoke these
+skills; see Setup below.
+
 ## Setup
 
 1. Get a ScrapingDog API key at [ScrapingDog](https://dub.sh/scrapingdog).
@@ -57,17 +89,8 @@ question actually needs, not used for the sake of using them.
    automatically (via `npx -y scrapingdog-mcp`), sourcing the key from `.env`.
 4. Approve the project MCP server when Claude Code prompts on first run.
 
-To use these skills from *any* project (not just this one), copy or symlink the three skill folders
-into `~/.claude/skills/`:
-
-```bash
-ln -s "$(pwd)/startup-idea-validator" ~/.claude/skills/startup-idea-validator
-ln -s "$(pwd)/competitor-teardown" ~/.claude/skills/competitor-teardown
-ln -s "$(pwd)/gtm-launch-planner" ~/.claude/skills/gtm-launch-planner
-```
-
-You'll still need the ScrapingDog MCP server configured wherever you invoke them, either globally,
-or per-project the same way this repo's `.mcp.json` does it.
+If you installed via skills.sh or the manual symlink above instead of working in this repo directly,
+you'll need the same ScrapingDog MCP server configured globally or in your own project's `.mcp.json`.
 
 ## The tool ScrapingDog isn't just search
 
@@ -80,9 +103,9 @@ picture of what's available before diving into any one skill.
 
 | Skill | What it produces | Deterministic scoring |
 | --- | --- | --- |
-| [`startup-idea-validator`](./startup-idea-validator) | 0-100 validation score, go/no-go verdict, shareable report | `scripts/score_idea.py`: 5 weighted dimensions |
-| [`competitor-teardown`](./competitor-teardown) | Per-competitor deep dive + momentum scorecard | `scripts/momentum_score.py`: 5 weighted dimensions |
-| [`gtm-launch-planner`](./gtm-launch-planner) | Positioning, channel plan, pricing, first-customers plan | none: a ranked plan, not a single score |
+| [`startup-idea-validator`](./skills/startup-idea-validator) | 0-100 validation score, go/no-go verdict, shareable report | `scripts/score_idea.py`: 5 weighted dimensions |
+| [`competitor-teardown`](./skills/competitor-teardown) | Per-competitor deep dive + momentum scorecard | `scripts/momentum_score.py`: 5 weighted dimensions |
+| [`gtm-launch-planner`](./skills/gtm-launch-planner) | Positioning, channel plan, pricing, first-customers plan | none: a ranked plan, not a single score |
 
 ## License
 
